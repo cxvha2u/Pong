@@ -14,7 +14,7 @@ public class Move : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * speed;
+        //rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * speed;
     }
 
     public void btnR()
