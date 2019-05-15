@@ -671,7 +671,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1533732094}
+      - m_Target: {fileID: 0}
         m_MethodName: btnL
         m_Mode: 1
         m_Arguments:
@@ -732,10 +732,11 @@ GameObject:
   - component: {fileID: 882605998}
   - component: {fileID: 882605997}
   - component: {fileID: 882605996}
-  - component: {fileID: 882605995}
   - component: {fileID: 882605999}
   - component: {fileID: 882606000}
-  - component: {fileID: 882606001}
+  - component: {fileID: 882606004}
+  - component: {fileID: 882606003}
+  - component: {fileID: 882606002}
   m_Layer: 0
   m_Name: objPlatform AI
   m_TagString: Enemy
@@ -743,19 +744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &882605995
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882605994}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &882605996
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -843,10 +831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62bc3af954d95ce4fae801627e855247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 1
   ball: {fileID: 1230813156}
   skill: 0.1
---- !u!136 &882606001
-CapsuleCollider:
+--- !u!135 &882606002
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -855,10 +844,35 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.05
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &882606003
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882605994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0.35, y: 0, z: 0}
+--- !u!135 &882606004
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 882605994}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -0.35, y: 0, z: 0}
 --- !u!1 &895849833
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,7 +954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1533732094}
+      - m_Target: {fileID: 0}
         m_MethodName: btnR
         m_Mode: 1
         m_Arguments:
@@ -1490,13 +1504,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1533732092}
-  - component: {fileID: 1533732094}
   - component: {fileID: 1533732091}
   - component: {fileID: 1533732090}
-  - component: {fileID: 1533732089}
   - component: {fileID: 1533732093}
-  - component: {fileID: 1533732095}
   - component: {fileID: 1533732096}
+  - component: {fileID: 1533732098}
+  - component: {fileID: 1533732097}
+  - component: {fileID: 1533732094}
   m_Layer: 0
   m_Name: objPlatform Player
   m_TagString: Player
@@ -1504,19 +1518,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &1533732089
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533732088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1533732090
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1592,21 +1593,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
---- !u!114 &1533732094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1533732088}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd8af9f6ecbee4e49a13e13eff242979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 30
---- !u!136 &1533732095
-CapsuleCollider:
+--- !u!135 &1533732094
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1615,9 +1603,8 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.05
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1533732096
 MonoBehaviour:
@@ -1631,8 +1618,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62bc3af954d95ce4fae801627e855247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 3
   ball: {fileID: 1230813156}
-  skill: 0.719
+  skill: 0.1
+--- !u!135 &1533732097
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533732088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0.35, y: 0, z: 0}
+--- !u!135 &1533732098
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533732088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: -0.35, y: 0, z: 0}
 --- !u!1 &1603005462
 GameObject:
   m_ObjectHideFlags: 0
