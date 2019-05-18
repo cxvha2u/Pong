@@ -35,6 +35,6 @@ public class AIMove : MonoBehaviour
         newPos = transform.position;
         newPos.x = Mathf.Lerp(transform.position.x, ball.position.x, skill);
         transform.position = newPos;
-        InvokeRepeating("switchAI", 1.0f, 1.0f);
+        InvokeRepeating("switchAI", 1.0f, 1.0f); //wait before changing the skill again
     }
 }

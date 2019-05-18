@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour
     public int playerScore { get { return PlayerPrefs.GetInt("PlayerScore"); } set { PlayerPrefs.SetInt("PlayerScore", value); } }
     public int enemyScore { get { return PlayerPrefs.GetInt("EnemyScore"); } set { PlayerPrefs.SetInt("EnemyScore", value); } }
 
+    public float speedMultiplier = 1;
     public float speed = 10;
 
     // Start is called before the first frame update
@@ -38,13 +39,25 @@ public class Ball : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Time.timeScale = 3f;
+            Time.timeScale = 4f;
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Time.timeScale = 8f;
+        }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Time.timeScale = 16f;
+        }
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Time.timeScale = 32f;
         }
     }
 
     void FixedUpdate()
     {   
-        rb.velocity = rb.velocity.normalized * speed;
+        rb.velocity = rb.velocity.normalized * speed * speedMultiplier;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,6 +71,10 @@ public class Ball : MonoBehaviour
         {
             enemyScore++;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            speedMultiplier += .1f;
         }
     }
 }
