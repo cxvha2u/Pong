@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class UI : MonoBehaviour
 {
-    [SerializeField] private Text playerScoreText;
-    [SerializeField] private Text enemyScoreText;
+    public Text playerScoreText;
+    public Text enemyScoreText;
 
     private void Update()
     {

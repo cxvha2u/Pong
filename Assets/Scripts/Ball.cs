@@ -12,12 +12,13 @@ public class Ball : MonoBehaviour
     public int playerScore { get { return PlayerPrefs.GetInt("PlayerScore"); } set { PlayerPrefs.SetInt("PlayerScore", value); } }
     public int enemyScore { get { return PlayerPrefs.GetInt("EnemyScore"); } set { PlayerPrefs.SetInt("EnemyScore", value); } }
 
-    public float speedMultiplier = 1;
+    public float speedMultiplier;
     public float speed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
+        speedMultiplier = 1;
         rb = GetComponent<Rigidbody>();
         initialImpulse = new Vector3((randomPos[Random.Range(0, randomPos.Length)]), (randomPos[Random.Range(0, randomPos.Length)]), 0);
         rb.AddForce(initialImpulse, ForceMode.Impulse);
