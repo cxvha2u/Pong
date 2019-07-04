@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class ChangeMaterialColor : MonoBehaviour
 {
+    //refactoring this is a pain
     public Material background;
     public Material ball;
-    public Material wall;
-    public Material deadZone;
+    public Material player;
+    public Material enemy;
 
     public Text playerScore;
     public Text enemyScore;
@@ -16,39 +17,39 @@ public class ChangeMaterialColor : MonoBehaviour
     [System.Serializable]
     public class ColorPalette0
     {
-        public Color pScore = new Color(1, 1, 1, .5f);
-        public Color eScore = new Color(0.6666667f, 0.2117647f, 0.2235294f, .5f);
+        public Color pScore = new Color32();
+        public Color eScore = new Color32();
 
         public Color32 bg = new Color32();
         public Color32 ball = new Color32();
-        public Color32 wall = new Color32();
-        public Color32 dz = new Color32();
+        public Color32 player = new Color32();
+        public Color32 enemy = new Color32();
     }
     public ColorPalette0 colorPalette0 = new ColorPalette0();
 
     [System.Serializable]
     public class ColorPalette1
     {
-        public Color pScore = new Color(0, 0, 0, .5f);
-        public Color eScore = new Color(0.8207547f, 0.2745098f, 0.2745098f, .5f);
+        public Color pScore = new Color32();
+        public Color eScore = new Color32();
 
         public Color32 bg = new Color32();
         public Color32 ball = new Color32();
-        public Color32 wall = new Color32();
-        public Color32 dz = new Color32();
+        public Color32 player = new Color32();
+        public Color32 enemy = new Color32();
     }
     public ColorPalette1 colorPalette1 = new ColorPalette1();
 
     [System.Serializable]
     public class ColorPalette2
     {
-        public Color pScore = new Color(1, 1, 1, 1);
-        public Color eScore = new Color(1, 1, 1, 1);
+        public Color pScore = new Color32();
+        public Color eScore = new Color32();
 
         public Color32 bg = new Color32();
         public Color32 ball = new Color32();
-        public Color32 wall = new Color32();
-        public Color32 dz = new Color32();
+        public Color32 player = new Color32();
+        public Color32 enemy = new Color32();
     }
     public ColorPalette2 colorPalette2 = new ColorPalette2();
 
@@ -73,8 +74,8 @@ public class ChangeMaterialColor : MonoBehaviour
 
             background.color = colorPalette0.bg;
             ball.color = colorPalette0.ball;
-            wall.color = colorPalette0.wall;
-            deadZone.color = colorPalette0.dz;
+            player.color = colorPalette0.player;
+            enemy.color = colorPalette0.enemy;
         }
         else if (colorPalette == 1)
         {
@@ -83,8 +84,8 @@ public class ChangeMaterialColor : MonoBehaviour
 
             background.color = colorPalette1.bg;
             ball.color = colorPalette1.ball;
-            wall.color = colorPalette1.wall;
-            deadZone.color = colorPalette1.dz;
+            player.color = colorPalette1.player;
+            enemy.color = colorPalette1.enemy;
         }
         else if (colorPalette == 2)
         {
@@ -93,8 +94,17 @@ public class ChangeMaterialColor : MonoBehaviour
 
             background.color = colorPalette2.bg;
             ball.color = colorPalette2.ball;
-            wall.color = colorPalette2.wall;
-            deadZone.color = colorPalette2.dz;
+            player.color = colorPalette2.player;
+            enemy.color = colorPalette2.enemy;
+        }
+    }
+
+    public void ColorSwitcher()
+    {
+        colorPalette++;
+        if(colorPalette > 2)
+        {
+            colorPalette = 0;
         }
     }
 

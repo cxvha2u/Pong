@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI : MonoBehaviour
+public class UpdateScoreText : MonoBehaviour
 {
-    public Text playerScoreText;
-    public Text enemyScoreText;
+    [SerializeField]
+    private Text playerScoreText;
+    [SerializeField]
+    private Text enemyScoreText;
 
     private void Update()
     {

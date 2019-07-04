@@ -5,60 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
-    float[] randomPos = new float[] { -2f, -1f, 1f, 2f };
-    Rigidbody rb;
-    public Vector3 initialImpulse;
+    private Rigidbody rb;
 
-    public int playerScore { get { return PlayerPrefs.GetInt("PlayerScore"); } set { PlayerPrefs.SetInt("PlayerScore", value); } }
-    public int enemyScore { get { return PlayerPrefs.GetInt("EnemyScore"); } set { PlayerPrefs.SetInt("EnemyScore", value); } }
+    private int playerScore { get { return PlayerPrefs.GetInt("PlayerScore"); } set { PlayerPrefs.SetInt("PlayerScore", value); } }
+    private int enemyScore { get { return PlayerPrefs.GetInt("EnemyScore"); } set { PlayerPrefs.SetInt("EnemyScore", value); } }
 
-    public float speedMultiplier;
-    public float speed = 10;
+    private float[] randomPos = new float[] { -2f, -1f, 1f, 2f }; // used for ball impulse
+    private float speedMultiplier;
+    private float speed = 10;
 
+    private Vector3 initialImpulse; // ball impulse at the beggining of the round
+    
     // Start is called before the first frame update
     void Start()
     {
-        speedMultiplier = 1;
         rb = GetComponent<Rigidbody>();
-        initialImpulse = new Vector3((randomPos[Random.Range(0, randomPos.Length)]), (randomPos[Random.Range(0, randomPos.Length)]), 0);
+        speedMultiplier = 1;
+        initialImpulse = new Vector2((randomPos[Random.Range(0, randomPos.Length)]), (randomPos[Random.Range(0, randomPos.Length)]));
         rb.AddForce(initialImpulse, ForceMode.Impulse);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Time.timeScale = 1f;
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            Time.timeScale = 2f;
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Time.timeScale = 4f;
-        }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Time.timeScale = 8f;
-        }
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Time.timeScale = 16f;
-        }
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            Time.timeScale = 32f;
-        }
     }
 
     void FixedUpdate()
     {   
-        rb.velocity = rb.velocity.normalized * speed * speedMultiplier;
+        rb.velocity = rb.velocity.normalized * speed * speedMultiplier; // ball movement
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -75,7 +44,7 @@ public class Ball : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Wall"))
         {
-            speedMultiplier += .1f;
+            speedMultiplier += .1f; // increase ball speed to make the game more challenging
         }
     }
 }

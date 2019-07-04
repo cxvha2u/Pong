@@ -4,34 +4,28 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    Rigidbody rb;
-    public float speed = 100;
+    private int currentState;
+
+    Vector2 mousePos;
+    Vector2 playerPos;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        mousePos = new Vector2(Screen.width/2, transform.position.y);
+        playerPos = mousePos;
     }
 
     void FixedUpdate()
     {
-        //rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0) * speed;
+        currentState = PlayerPrefs.GetInt("CurrentControlState", 0); // used for AI debugging - player can switch to AI
+
+        //playerPos = transform.position; // 
+        playerPos.x = Mathf.Lerp(transform.position.x, mousePos.x, .4f); //can't acc
+        transform.position = playerPos;
     }
 
-    public void btnR()
+    private void Update()
     {
-        rb.velocity = new Vector3(speed, 0, 0);
-        Debug.Log("button R pressed");
-    }
-
-    public void btnL()
-    {
-        rb.velocity = new Vector3(-speed, 0, 0);
-        Debug.Log("button L pressed");
-    }
-
-    public void noBtn()
-    {
-        rb.velocity = new Vector3(0, 0, 0);
-        Debug.Log("button left!");
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

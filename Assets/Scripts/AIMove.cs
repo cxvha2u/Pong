@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class AIMove : MonoBehaviour
 {
-    public int level = 1; //1 - easy, 2 - medium, 3 - hard
-    public Transform ball;
-    Vector3 newPos;
-
-    [Range(0, 1)]
-    public float skill;
+    [SerializeField]
+    private int level = 1; //1 - easy, 2 - medium, 3 - hard
     
-    public void switchAI()
+    private float skill;
+
+    [SerializeField]
+    private Transform ball;
+
+    private Vector2 newPos;
+
+    private void Start()
+    {
+        newPos = new Vector2(Screen.width / 2, transform.position.y);
+        skill = Random.Range(0.05f, 0.15f);
+    }
+
+    public void SwitchLevel()
     {
         if(level == 1)
         {
@@ -32,9 +41,8 @@ public class AIMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        newPos = transform.position;
         newPos.x = Mathf.Lerp(transform.position.x, ball.position.x, skill);
         transform.position = newPos;
-        InvokeRepeating("switchAI", 1.0f, 1.0f); //wait before changing the skill again
+        InvokeRepeating("SwitchLevel", 1.0f, 1.0f); //wait before changing the skill again
     }
 }
