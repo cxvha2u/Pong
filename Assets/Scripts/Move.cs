@@ -19,7 +19,6 @@ public class Move : MonoBehaviour
     {
         currentState = PlayerPrefs.GetInt("CurrentControlState", 0); // used for AI debugging - player can switch to AI
 
-        //playerPos = transform.position; // 
         playerPos.x = Mathf.Lerp(transform.position.x, mousePos.x, .4f); //can't acc
         transform.position = playerPos;
     }
